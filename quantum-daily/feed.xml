@@ -1,4 +1,18 @@
-# Quantum Daily — 2026-08-27
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>Quantum Daily</title>
+<id>https://github.com/ShumpeiUno/information/tree/main/quantum-daily</id>
+<link rel="self" href="https://raw.githubusercontent.com/ShumpeiUno/information/main/quantum-daily/feed.xml"/>
+<link href="https://github.com/ShumpeiUno/information/tree/main/quantum-daily"/>
+<updated>2026-08-27T00:28:38.342621Z</updated>
+<entry>
+<title>Quantum Daily — 2026-08-27</title>
+<id>https://github.com/ShumpeiUno/information/blob/main/quantum-daily/archive/2026/08/2026-08-27-daily.md</id>
+<link href="https://github.com/ShumpeiUno/information/blob/main/quantum-daily/archive/2026/08/2026-08-27-daily.md"/>
+<published>2026-08-26T21:30:00Z</published>
+<updated>2026-08-26T21:30:00Z</updated>
+<summary>Quantum Daily — 2026 08 27 発行・更新: 2026 08 27 09:28 JST 収集候補: 65件 推定読了時間: 36分 3分で把握する重要動向 1. 金融直結の最重要はCVA実機実装 です。ノイズを明示的に組み込んだ振幅推定ワークフローが、CVAの誤差を統計・離散化・エンコーディング・ハードウェアに分解して扱っています。QAEを金融で本当に使う際の「どこで崩れるか」に踏み込んだ点が大きいです。 2. 理論アルゴリズムは厚い日 でした。連続Gibbsサンプリングでの初の量子古典分離、ガイディング状態付き基底エネルギー推定の最適化、制御数に依らないToffoli深さ1の分解は、Early FTQCで効く基礎部材です。 3. FT/ハードは“積み上げ”型の前進 です。DUV製造対応TWPA、Lindbladノイズ学習、ZX calculusからの符号理解は、派手な論理量子ビット実証ではない一方、スケール移行に必要な足回りです。 4. PQCと金融インフラは政策シグナル先行 です。米財務省・GSA関連の量子準備報道は重要ですが、今日は入力内に一次文書がなく、評価は抑制的に置くのが妥当です。 Research and Algorithms 01. 連続Gibbsサンプリングで初の量子古典分離 結果 連続領域のGibbs状態サンプリングについて、古典は密度値・勾配・高階導関数にアクセスできても Ω(α) クエリを要する一方、量子はQSVTと温度アニーリングで \tilde{O}(\sqrt{α}) クエリで済む、という分離を主張しています。 なぜ重要か サ</summary>
+<content type="html"><![CDATA[<pre># Quantum Daily — 2026-08-27
 
 発行・更新: 2026-08-27 09:28 JST  
 収集候補: 65件  
@@ -21,7 +35,7 @@
 
 **証拠** arXivプレプリントの一次資料です。抽象には下界・上界の形が明示されていますが、証明条件や定数因子は入力情報では未確認です。
 
-**金融R&Dへの含意** 直接の金融応用ではありませんが、連続分布のサンプリング優位をきちんと定式化した点は、将来のリスク中立測度サンプリングや稀事象推定の理論土台になり得ます。
+**金融R&amp;Dへの含意** 直接の金融応用ではありませんが、連続分布のサンプリング優位をきちんと定式化した点は、将来のリスク中立測度サンプリングや稀事象推定の理論土台になり得ます。
 
 **判定** 精読。重要度 **S** / 証拠 **B**。  
 [arXiv](https://arxiv.org/abs/2608.24527v1)
@@ -33,7 +47,7 @@
 
 **証拠** arXivプレプリントの一次資料です。開いた未解決問題に答えたとありますが、具体的な前提や誤差依存は入力情報だけでは全確認できません。
 
-**金融R&Dへの含意** 直接の金融含意は薄いです。ただし、量子優位を主張する際に必要なクエリ複雑性の詰めが進んでいる、という意味でベンチマーク設計の基準になります。
+**金融R&amp;Dへの含意** 直接の金融含意は薄いです。ただし、量子優位を主張する際に必要なクエリ複雑性の詰めが進んでいる、という意味でベンチマーク設計の基準になります。
 
 **判定** 精読。重要度 **A** / 証拠 **B**。  
 [arXiv](https://arxiv.org/abs/2608.24494v1)
@@ -45,7 +59,7 @@
 
 **証拠** arXivプレプリントの一次資料です。抽象にはクエリ複雑性から明示的ゲート数への橋渡しがうたわれていますが、金融PDEへの直接実証は入力情報では未確認です。
 
-**金融R&Dへの含意** デリバティブ価格付けやGreeks計算の一部はPDE系に落ちるため、正則性依存を明示する議論は有用です。ただし、現時点では理論色が強いです。
+**金融R&amp;Dへの含意** デリバティブ価格付けやGreeks計算の一部はPDE系に落ちるため、正則性依存を明示する議論は有用です。ただし、現時点では理論色が強いです。
 
 **判定** 本文確認。重要度 **A** / 証拠 **B**。  
 [arXiv](https://arxiv.org/abs/2608.07893v2)
@@ -57,7 +71,7 @@
 
 **証拠** arXivプレプリントの一次資料です。抽象には既存法より高価な長距離探索に頼らず最適化するとありますが、比較条件の詳細は入力情報では未確認です。
 
-**金融R&Dへの含意** QAEや量子シミュレーションの実用化では、オラクルや時間発展のコンパイル品質が支配要因になります。直接の金融論文ではないものの、下支え技術として見ておく価値があります。
+**金融R&amp;Dへの含意** QAEや量子シミュレーションの実用化では、オラクルや時間発展のコンパイル品質が支配要因になります。直接の金融論文ではないものの、下支え技術として見ておく価値があります。
 
 **判定** 本文確認。重要度 **A** / 証拠 **B**。  
 [arXiv](https://arxiv.org/abs/2608.11579v2)
@@ -69,7 +83,7 @@
 
 **証拠** arXivプレプリントの一次資料です。抽象は応用先まで具体的ですが、T-state換算やエラー訂正前提の資源評価は入力情報では未確認です。
 
-**金融R&Dへの含意** 振幅推定系の金融回路は比較・加算・閾値判定を多用します。ancillaとのトレードオフ次第では、オラクル設計の現実解を変える可能性があります。
+**金融R&amp;Dへの含意** 振幅推定系の金融回路は比較・加算・閾値判定を多用します。ancillaとのトレードオフ次第では、オラクル設計の現実解を変える可能性があります。
 
 **判定** 精読。重要度 **A** / 証拠 **B**。  
 [arXiv](https://arxiv.org/abs/2604.25861v3)
@@ -83,7 +97,7 @@
 
 **証拠** arXivプレプリントの一次資料です。数値は抽象にありますが、既存TWPAとの同条件比較や歩留まりは入力情報では未確認です。
 
-**金融R&Dへの含意** 直接の金融含意はありません。実機性能の積み上げが、将来の量子金融実験の再現性とスループットを左右します。
+**金融R&amp;Dへの含意** 直接の金融含意はありません。実機性能の積み上げが、将来の量子金融実験の再現性とスループットを左右します。
 
 **判定** 本文確認。重要度 **A** / 証拠 **B**。  
 [arXiv](https://arxiv.org/abs/2603.14455v2)
@@ -95,7 +109,7 @@
 
 **証拠** arXivプレプリントの一次資料です。抽象だけでは実用距離やしきい値は確認できません。
 
-**金融R&Dへの含意** 直接含意はありません。FTQCに向かう基礎理論の蓄積として追う位置づけです。
+**金融R&amp;Dへの含意** 直接含意はありません。FTQCに向かう基礎理論の蓄積として追う位置づけです。
 
 **判定** 継続監視。重要度 **B** / 証拠 **B**。  
 [arXiv](https://arxiv.org/abs/2601.04467v3)
@@ -107,7 +121,7 @@
 
 **証拠** arXivプレプリントの一次資料です。理論保証を伴うとありますが、実験データ適用の有無は入力情報では未確認です。
 
-**金融R&Dへの含意** 直接含意はありません。ただし、金融向け量子回路の実機性能評価でも、ノイズモデル同定の成熟度は必須です。
+**金融R&amp;Dへの含意** 直接含意はありません。ただし、金融向け量子回路の実機性能評価でも、ノイズモデル同定の成熟度は必須です。
 
 **判定** 本文確認。重要度 **B** / 証拠 **B**。  
 [arXiv](https://arxiv.org/abs/2608.24668v1)
@@ -119,7 +133,7 @@
 
 **証拠** arXivプレプリントの一次資料です。ベンチマーク指標としての頑健性は入力情報では未確認です。
 
-**金融R&Dへの含意** 直接含意はありません。
+**金融R&amp;Dへの含意** 直接含意はありません。
 
 **判定** 継続監視。重要度 **B** / 証拠 **B**。  
 [arXiv](https://arxiv.org/abs/2507.03440v2)
@@ -133,7 +147,7 @@
 
 **証拠** arXivプレプリントの一次資料です。抽象には比較対象と誤差分解がありますが、資産数・時間刻み・実機条件・古典基準とのフェアな比較は入力情報では未確認です。
 
-**金融R&Dへの含意** 本日の最重要項目です。QAEをCVAに使う際のボトルネックが、サンプリング回数だけでなくオラクル深さ・離散化解像度・実機コントラスト損失にあることを前提に、PoC設計を見直す材料になります。
+**金融R&amp;Dへの含意** 本日の最重要項目です。QAEをCVAに使う際のボトルネックが、サンプリング回数だけでなくオラクル深さ・離散化解像度・実機コントラスト損失にあることを前提に、PoC設計を見直す材料になります。
 
 **判定** 精読。重要度 **S** / 証拠 **B**。  
 [arXiv](https://arxiv.org/abs/2607.12990v2)
@@ -145,7 +159,7 @@
 
 **証拠** arXivプレプリントの一次資料です。実データ評価がある一方、抽象の範囲では前処理、特徴量設計、公平な古典比較、計算コストは未確認です。
 
-**金融R&Dへの含意** 不正検知や異常検知に関心がある金融機関には観察価値があります。ただし、現時点では“量子らしい構造化特徴量”の提案として受け止めるのが妥当です。
+**金融R&amp;Dへの含意** 不正検知や異常検知に関心がある金融機関には観察価値があります。ただし、現時点では“量子らしい構造化特徴量”の提案として受け止めるのが妥当です。
 
 **判定** 本文確認。重要度 **B** / 証拠 **B**。  
 [arXiv](https://arxiv.org/abs/2608.24631v1)
@@ -157,7 +171,7 @@
 
 **証拠** arXivプレプリントの一次資料です。ただし用途は有限要素解析であり、金融ベンチマークではありません。量子寄与の純増分も入力情報だけでは未確認です。
 
-**金融R&Dへの含意** 直接には工学CAEですが、疎行列・分割・ハイブリッド実装の考え方は、将来のリスク計算基盤や大規模最適化に移植可能です。
+**金融R&amp;Dへの含意** 直接には工学CAEですが、疎行列・分割・ハイブリッド実装の考え方は、将来のリスク計算基盤や大規模最適化に移植可能です。
 
 **判定** 継続監視。重要度 **B** / 証拠 **B**。  
 [arXiv](https://arxiv.org/abs/2603.15515v4)
@@ -171,7 +185,7 @@
 
 **証拠** 今日は一次資料や規制本文が入力内にありません。Google News集約URL経由の二次報道のみで、制度の正式名称、期限、適用範囲は入力情報では未確認です。
 
-**金融R&Dへの含意** 技術チームより先に、第三者リスク管理と暗号アジリティ台帳整備が論点になる可能性があります。実務上は重要ですが、本文確認なしに強い結論は避けるべきです。
+**金融R&amp;Dへの含意** 技術チームより先に、第三者リスク管理と暗号アジリティ台帳整備が論点になる可能性があります。実務上は重要ですが、本文確認なしに強い結論は避けるべきです。
 
 **判定** 本文確認。重要度 **A** / 証拠 **C**。  
 [Quantum Computing Report 経由のGoogle News集約URL](https://news.google.com/rss/articles/CBMi5AFBVV95cUxNQ2owVm9TSUtiZFhuaUFOTDk4M3J4NVhNT290dnU2cHIzbmhoWV82NmlBejJGdFFVMEtPTkhqNFN0QW92VVpTdEVSLUlhSXdRU25TUEh1RktzcjB4RU1XWGt4VEtDR3Vnd01Db2RNUkE0VXNra1YzNXhjUXZEb1Yxendac3R2eEZOTE52T0ZUTGlPMzl1a3RQdWlIbUNzY0dmS2NFOE1nck41M19wMi13VkRkM0I2VG1VTDBtdnh3Z1d0YU16eHVKS0RmV3VVOEhVdFRqSkxRSGZzMWJZODdDSVlPLWLSAeoBQVVfeXFMT0tGeDd2V0YyNkIxdXc3WlA5N1RrcDZqRmJDNjZkNWVrUkswWVpWcUNtQ0dvV0tyS1dfcWZaeWp0aG9UdWUxV1hhM1QyM2NSZ2w0U0NQT0RRY3ZYTjN0SGxKYXZRaE9LTzRveEJXZTJJWmRVNmREWXVEZmFHbTZIS0dld003ajB2THZULTVpZV9LOE5QLXNiSGFsZ2JaQWhaWlBVQ3dRaGtwdU1MNUdwUklOU1pzdUROakZkdC1VbERZSmVuYWVTRElOVzVHcVhrSGNYLWMtdEFtOHJkbjZQOUc2QU1hV2JldmpB?oc=5) ・ [Tech Times 経由のGoogle News集約URL](https://news.google.com/rss/articles/CBMizgFBVV95cUxQZi1WbE1sN1F1TmFHMTN5MlZ0WnlKWERwUTFMN3hzRlVRb1o4cENZYTQ1WXFWc3NUS2JmLWlZeDB4TG1NQWZ3bENWOTdXSHduNVM0bUxUYVJLSzkwc0NVM0M0dWZDZWc0T3BoX2l1MUEydmM4cnFZVXFCRFl0SHJ6R0FGd1RJVF9jYXE5SWR3bk5valBrLWJWaUZZRU5EVm9YeVpTb1J6NHpYUkdRMlF2WHFGMmtDY3QtUzQtbUxYUnR6NG9iNkJ1WWNMaUxSZw?oc=5) ・ [Finextra 経由のGoogle News集約URL](https://news.google.com/rss/articles/CBMimwFBVV95cUxOUExDYnc1Z2tLc0taT2NHeUcxVFZPWFZBRjZnc0J6bWRUb2Z3QW1OQ0hVdGhTY1l0U1JrSUNTZG56T1VJNW1Ib3g1RFY1bHlqeEFTdDVBWXRvbjBrQ1ktSzdoblc3YjFqaF9COEZNck5JUnNmTS1OdGozNmgwaG9aTXFTRXNlbTAzSUgxTmhlZzRQT181TkZnV2pKOA?oc=5)
@@ -183,7 +197,7 @@
 
 **証拠** arXivプレプリントの一次資料です。絶対的必要性を主張する強い書きぶりですが、攻撃実用性や具体的な鍵長影響は入力情報では未確認です。
 
-**金融R&Dへの含意** 長期保護データでは「PQC済みだから終わり」とは言えません。対称鍵側の安全余裕や運用パラメータを再点検する論点につながります。
+**金融R&amp;Dへの含意** 長期保護データでは「PQC済みだから終わり」とは言えません。対称鍵側の安全余裕や運用パラメータを再点検する論点につながります。
 
 **判定** 本文確認。重要度 **A** / 証拠 **B**。  
 [arXiv](https://arxiv.org/abs/2608.24799v1)
@@ -195,7 +209,7 @@
 
 **証拠** arXivプレプリントの一次資料です。適用範囲は「浅い問い合わせ adversary」に限られ、一般の場合への拡張は入力情報では未確認です。
 
-**金融R&Dへの含意** 直接の実装論文ではありませんが、将来の高信頼鍵生成や監査可能な乱数供給の理論基盤として意味があります。
+**金融R&amp;Dへの含意** 直接の実装論文ではありませんが、将来の高信頼鍵生成や監査可能な乱数供給の理論基盤として意味があります。
 
 **判定** 継続監視。重要度 **B** / 証拠 **B**。  
 [arXiv](https://arxiv.org/abs/2608.24832v1)
@@ -209,7 +223,7 @@
 
 **証拠** いずれもニュース要約で、一次のNSF公募文書や採択文書は入力内にありません。金額や期間以外の制度詳細は未確認です。
 
-**金融R&Dへの含意** 直接含意はありませんが、FTQCへの資金流入が続く前提で、中長期ロードマップの割引率を下げる材料にはなります。
+**金融R&amp;Dへの含意** 直接含意はありませんが、FTQCへの資金流入が続く前提で、中長期ロードマップの割引率を下げる材料にはなります。
 
 **判定** 継続監視。重要度 **B** / 証拠 **C**。  
 [The Quantum Insider 経由のGoogle News集約URL](https://news.google.com/rss/articles/CBMimgFBVV95cUxQa1k5QnFBOVRnMW8ycmc4Z3puV2NfZzMydlF4R0RjRHE5cjhpMGVGRmJvQnZwdU5yX3I2UjQ0X05sUWdtVW1id0VFbWY0NGFZQUotYjE3WFVkLVZpNWptYmV3dDZadnZYX21ud0tYZDRnSExMMDMxX1R1Vzd2TGRWZGVUaFd4XzJlQ25Vbm1odkdiV3ZtcVUyZXRB?oc=5) ・ [HPCwire 経由のGoogle News集約URL](https://news.google.com/rss/articles/CBMirgFBVV95cUxPNGMwUVpmUDNSMGZERm9sX1N3Tzl1bU16cXBRQjZXajExX1Fndi0xU0taNXVUV2l4WExISWIzSm1yeFVySm5TYjV6Y2Vid19iWFQwV0NkejhNVi0tMDd3UkRuYzNxXzUtQ2IxSVhfUThpWDNXbUk0Zm9fZjljXy1kRU5oSURabTBjSDI1R2U4OUN5cUdZbnlobzlOWUZPLWp3Q29hTTFnUUtINVNPTmc?oc=5) ・ [UCLA/NSF関連のGoogle News集約URL](https://news.google.com/rss/articles/CBMirAFBVV95cUxNVVlaNjlCa1hGVUNxak90TFBUOHBSUV91U0FpTW1iVlA0X1YxaFY1bTNLemhWRnVoMzNNSlNoRW1PUlhwUVFaRG8tdGM2aXVXUmltcVNjV3c1ZkgzeVE5VWk2OE9UMGFhLVV6bF9uM05KOUhNSVNseXFaaFdHS1JDZUcybnlZTE1YRXNXXzZzV1gxWmk0Z2c2X3J6ZkhmSjZETFVWNHV1ZkswU3Y4?oc=5) ・ [QuBBE/HQAN延長のGoogle News集約URL](https://news.google.com/rss/articles/CBMiqwFBVV95cUxPNzYtZk9wSEg3eUR2bGdYbmxXLWdKOWh2SUk2ekxSU2dSbkt6VjZnNmRyX1ZhQ094RG5lRjRpVXA4S2RkOVVUTElxb0pUalJFZDR4aDRkeXdyRHNfbm1IQTlETnUwTXR5UTlyUnBxN21Ock9OcVRQZmFwZEw3RVVUVm1jVV85RktYNTkwM0xXTEpLMVl2UHFTcW9IemZqUTFjb3FuTlR4XzdjdTg?oc=5)
@@ -221,7 +235,7 @@
 
 **証拠** HPCwire経由のGoogle News集約URLのみで、原論文URLや著者情報は入力内にありません。内容評価はできません。
 
-**金融R&Dへの含意** 直接含意はありません。
+**金融R&amp;Dへの含意** 直接含意はありません。
 
 **判定** 本文確認。重要度 **B** / 証拠 **C**。  
 [HPCwire 経由のGoogle News集約URL](https://news.google.com/rss/articles/CBMivwFBVV95cUxQTlZ3YWRPRG1EYTV0OG1DLXZtQkNrTmdXSGZtQlRleHRvdWNyNkdtcE5LLVJyeUhGMjc2VUkwOFpPQl9CRF9YWUxMSHhCTlc1VkEtZklpOXIzMjJfamxVQmc3Y3cwYXZwd05qeElOLWw0S2xucFhkX1otRlZQVzBmVUt4NjY2MThHbEw1d243NFpZbXBwbVp0XzBFVlNmcGpwZTZyNHBFcFVCdEpXbmJJX2dENHE1N3JQU0dHUFQ2bw?oc=5)
@@ -233,7 +247,7 @@
 
 **証拠** いずれもGoogle News集約URLベースの報道で、EIPや一次研究へのリンクは入力内にありません。技術的実体は未確認です。
 
-**金融R&Dへの含意** トークン化資産やDLT決済を扱うチームは、PQC移行と鍵ローテーション設計の議論が対外説明責任に波及する可能性があります。
+**金融R&amp;Dへの含意** トークン化資産やDLT決済を扱うチームは、PQC移行と鍵ローテーション設計の議論が対外説明責任に波及する可能性があります。
 
 **判定** 継続監視。重要度 **C** / 証拠 **C**。  
 [CryptoRank 経由のGoogle News集約URL](https://news.google.com/rss/articles/CBMiiAFBVV95cUxNLUU1SkRhdTdseWpoSk1WV2VUQXBNR0pKSU1zUWhLOFRFbVJ3YkhfckNBYTIyV1hCUTRpdHhkckMyU3g1STRKb1Bjd01oS0I3VlFKZUlqOGJ5RGdyMi0xaGRhMVJtd3FGQWtxX096X21EajU4Ul94OXNiUmljUm9SVnlvdEZ2Rjl5?oc=5) ・ [Bitcoin World 経由のGoogle News集約URL](https://news.google.com/rss/articles/CBMie0FVX3lxTFBMTkdUeFFLeVFzaXVZcjRlenZKaXdNTW5tMWhITmVXOHNZMkFfQnY3dGMxT0JIYlVxOXdTT2x0SHo2MGJOazhvLTNoUFFLNmdsTGdVOUZuNVJpWWplS1dMRllGRFFET0FmTlZBTUM3V3dISWUwUi1aWW9nQQ?oc=5) ・ [DigitalToday 経由のGoogle News集約URL](https://news.google.com/rss/articles/CBMixgFBVV95cUxPRzdReGpvNWJJTS1qNy1pbUpIMTNZWDZDZGtqak5EOXUyUnNFUlpHUkZMRFNBQUV1Y21GSDRNWFIwbjZWOUJYeUpKek5KUll2Q0VkckU5SUlfVDBVSmR0eE9Ga2Vla1F3VnlNaUo5a3NwRjdScGRiZU9KQU5VSmQ5VmhSemlFMkdNZEdrc3dXODVya0Nxd1dMZ1JRWkVmWUczckRmLVJsSWlGcFQtRkZYY2FuQVNxcDE1ZXJ3bS1uVWh0eGYwdVE?oc=5) ・ [Pluang 経由のGoogle News集約URL](https://news.google.com/rss/articles/CBMimgFBVV95cUxQSks3VkpLZ1l5YU1XZ1lGTXBPdUVHaGFnQVZ2d3IxMG05ZU1rSU1LblloWXlZVFBTWUtFS01wOXk5VWx5OWN2dV9heDNvR1VuS3BPTUlDNVlzWGFhSGE0MWNWcE9iUGVZZGtHY2VLOXhmZW5QSGNyeXdKTlducllQQWlIdnppU3NSUktxdl85MVB6UmRoSEFySy1R?oc=5)
@@ -245,7 +259,10 @@
 
 **証拠** 二次報道またはプレスリリース系の題名・要約のみです。
 
-**金融R&Dへの含意** 調達判断の材料には不十分です。今日は採用せず、標準適合性・性能・移行手順の一次資料待ちが妥当です。
+**金融R&amp;Dへの含意** 調達判断の材料には不十分です。今日は採用せず、標準適合性・性能・移行手順の一次資料待ちが妥当です。
 
 **判定** 見送り。重要度 **C** / 証拠 **C**。  
 [FASTKAT のGoogle News集約URL](https://news.google.com/rss/articles/CBMid0FVX3lxTE5JeEJTcUt2d3M0MUlTS3htWlZ2cnU0T1ZGYWx2LThTYnZYYVFMOV81V2h0TGxtbnFPOTZQUUZxcmt6Ul9TVTVFc2RHc2Vqcm1GNGtxRFpOM3MxNFNNNXRYWTdleWZza1U3WVZJX2NTQnBLNDNhNUUw?oc=5) ・ [QuantumGenie のGoogle News集約URL](https://news.google.com/rss/articles/CBMi7AFBVV95cUxPbFd0T1F4c1d3ZW5PRC01YW5rMC1FRmQ4anVqUDBTNUVfY1FlOFdibGUwYTBiQWkyNmRnRFU3RG9HclRZUkFMbGwzNUY0cjV0MGVndXdMTWg4bnBRR0doRlNYcTB2RGdLdkI5N2NwUktJUlRhRlE4bzUweXIyRG5HaTNoRjJ4WlU0c2huMlhveWRRRFNsWnp0SkYyVTAwTkR3SG9SYnZvMV9BV3lOTXU0YTRoMmRFOFhZU1BZZlJCQ3FpMWd6WmZLclVDSkMxMS1aTUNRM1pCc2lESkNzN0E0MFJHLWRWa21wWjdpMQ?oc=5) ・ [Thales のGoogle News集約URL](https://news.google.com/rss/articles/CBMiiwFBVV95cUxPQzVsMXhjSWh4NXlTMnVlbGFrc2piWVVyc2JpT3pBZ0pfZEZFOGxYekg3S0ViYjF5QjBMLUJIVVpfc0ZCaE9NNlpCb0lWejVnZ2JpcHNYZER2RlVUWHZ2anQzYjhFNTR2OXZ4dWI4QWRaQTB4eUVCbWpFRzBzbkdBQ3RKaExSY1JYNHk0?oc=5) ・ [iTWire のGoogle News集約URL](https://news.google.com/rss/articles/CBMiugFBVV95cUxPRnJnUjVzaVRZTmF3MmdUcm1sY2xfU241WE9GRGJOMUVaTFNLdzhOWkpjU0FvM1ByVXJ6MDBFZ2UzcXJyMV9ObHJkZ3h1SGRYWGNfVXVWOUU4c1F1VG01Y24wZWxEU2t2ZEdYaDMwSzhZUDgtOURsNkhlWGxLd0F3aFpsdmg5dHpHV21ZeFItYVNrOGFGNXowWWdnVmdXOVRsX3Y0MjNWYnZieTFYdVNPOXhKWnJLNUgzLWc?oc=5)
+</pre>]]></content>
+</entry>
+</feed>
