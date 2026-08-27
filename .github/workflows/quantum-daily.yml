@@ -2,8 +2,8 @@ name: Quantum Daily Brief
 
 on:
   schedule:
-    # Monday-Friday 06:30 JST (Sunday-Thursday 21:30 UTC)
-    - cron: "30 21 * * 0-4"
+    # Monday-Friday 05:05 JST (Sunday-Thursday 20:05 UTC)
+    - cron: "5 20 * * 0-4"
     # Friday 20:30 JST
     - cron: "30 11 * * 5"
   workflow_dispatch:
@@ -101,7 +101,7 @@ jobs:
             EDITION_RULES='通勤中に25〜30分で読む日次版とする。冒頭に「3分で把握する重要動向」を置き、その後を「Research and Algorithms」「Fault Tolerance and Hardware」「Finance, QAE and Monte Carlo」「PQC and Financial Infrastructure」「Industry, Policy and Signals」の順に整理する。件数上限は設けず、重要な新着を漏らさない。'
           fi
 
-          cat > copilot-prompt.txt <<EOF
+          cat > copilot-prompt.txt <<PROMPT
           あなたは、量子情報科学、量子アルゴリズム、量子誤り訂正、金融工学、耐量子暗号を横断するシニア研究編集者です。
 
           発行日: ${DATE_JST}
@@ -123,7 +123,7 @@ jobs:
           10. Google Docs、Gmail、Even G2で順に読めるよう、段落を短くし、過度な入れ子や長い前置きを避ける。Markdown本文だけを返し、コードフェンス、前置き、作業報告は付けない。
 
           ===== SOURCE MATERIAL START =====
-          EOF
+          PROMPT
           cat SOURCE.md >> copilot-prompt.txt
           printf '\n===== SOURCE MATERIAL END =====\n' >> copilot-prompt.txt
 
@@ -215,56 +215,6 @@ jobs:
           cp "$TARGET_FILE" "archive/$YEAR/$MONTH/${DATE_JST}-${MODE}.md"
           python quantum_daily.py build-feed
           rm -f SOURCE.md copilot-prompt.txt copilot-events.jsonl
-
-      - name: Sync Google Docs and send Gmail when configured
-        working-directory: quantum-daily
-        shell: bash
-        env:
-          GOOGLE_WEBHOOK_URL: ${{ secrets.GOOGLE_APPS_SCRIPT_WEBHOOK_URL }}
-          GOOGLE_WEBHOOK_SECRET: ${{ secrets.GOOGLE_APPS_SCRIPT_WEBHOOK_SECRET }}
-        run: |
-          set -euo pipefail
-          if [[ -z "${GOOGLE_WEBHOOK_URL:-}" || -z "${GOOGLE_WEBHOOK_SECRET:-}" ]]; then
-            echo "Google webhook secrets are not configured; public GitHub and Atom publication remain active."
-            exit 0
-          fi
-
-          MODE="${{ steps.edition.outputs.mode }}"
-          DATE_JST="$(TZ=Asia/Tokyo date +%F)"
-          if [[ "$MODE" == "weekend" ]]; then
-            TARGET_FILE="WEEKEND.md"
-            PREFIX="Quantum Weekend"
-          else
-            TARGET_FILE="CURRENT.md"
-            PREFIX="Quantum Daily"
-          fi
-
-          MODE="$MODE" DATE_JST="$DATE_JST" PREFIX="$PREFIX" TARGET_FILE="$TARGET_FILE" python - <<'PY'
-          import json
-          import os
-          import urllib.request
-          from pathlib import Path
-
-          markdown = Path(os.environ["TARGET_FILE"]).read_text(encoding="utf-8")
-          payload = {
-              "secret": os.environ["GOOGLE_WEBHOOK_SECRET"],
-              "mode": os.environ["MODE"],
-              "date": os.environ["DATE_JST"],
-              "subject": f"[{os.environ['PREFIX']}] {os.environ['DATE_JST']}",
-              "markdown": markdown,
-          }
-          request = urllib.request.Request(
-              os.environ["GOOGLE_WEBHOOK_URL"],
-              data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
-              headers={"Content-Type": "application/json; charset=utf-8"},
-              method="POST",
-          )
-          with urllib.request.urlopen(request, timeout=90) as response:
-              result = json.loads(response.read().decode("utf-8"))
-          if not result.get("ok"):
-              raise SystemExit(f"Google bridge failed: {result}")
-          print(json.dumps(result, ensure_ascii=False))
-          PY
 
       - name: Commit current edition, archive, feed and seen ledger
         shell: bash
