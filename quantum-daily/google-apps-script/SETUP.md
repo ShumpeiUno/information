@@ -1,47 +1,45 @@
-# Google Docs・Gmail連携
+# Google Docs・Gmail自動配信
 
-この連携は、GitHub Actionsが作成した最新号を固定Google Docsへ反映し、同じ本文を`chiral.perturbation@gmail.com`へ送信します。Googleの認証情報をGitHubへ直接保存せず、Google Apps ScriptのWebhookを介します。
+公開GitHub版の最新号をGoogle Apps Scriptが取得し、固定Google Docsへ反映したうえで、同じ本文を`chiral.perturbation@gmail.com`へ直接送信します。GitHubの認証情報や共有シークレットは不要です。
 
-## 1. Apps Scriptを作成する
+## 作成済みのApps Script
 
-1. `https://script.google.com/`で新しいプロジェクトを作成します。
-2. 標準の`Code.gs`を削除し、このフォルダの[`Code.gs`](Code.gs)を貼り付けます。
-3. プロジェクト名を`Quantum Daily Bridge`などに変更します。
+[Quantum Daily Google Automation](https://script.google.com/d/1AEEIayMKYUlVTVLxF77Uo6_HMy1xAV5J3a8Nty042w0JI7HdidBKXC8o/edit)
 
-## 2. 共有シークレットを設定する
+コードとマニフェストは設定済みです。Googleの仕様上、所有者本人による最初の権限承認だけは代理実行できないため、次の操作を1回行います。
 
-1. Apps Scriptの「プロジェクトの設定」を開きます。
-2. 「スクリプト プロパティ」に`WEBHOOK_SECRET`を追加します。
-3. 値には、パスワードマネージャー等で生成した32文字以上のランダム文字列を設定します。メール、Google Docs、GitHubのパスワードは使用しません。
+1. 上記Apps Scriptを開きます。
+2. 上部の関数選択で`installAutomation`を選びます。
+3. 「実行」を押します。
+4. Googleアカウントを選び、Google Docsの編集、外部URLの取得、メール送信、時間主導型トリガーの作成を許可します。
+5. 実行完了後、固定Google Docが最新号へ更新され、確認メールが届きます。
 
-## 3. Webアプリとしてデプロイする
+## 実行時刻
 
-1. 「デプロイ」から「新しいデプロイ」を選びます。
-2. 種類は「ウェブアプリ」を選びます。
-3. 「次のユーザーとして実行」は自分を選びます。
-4. 「アクセスできるユーザー」は`全員`を選びます。Webhook本文の共有シークレットで認証します。
-5. 初回の権限確認で、対象Google Docsへの編集とメール送信を許可します。
-6. 発行された`/exec`で終わるWebアプリURLを控えます。
+- 公開版生成: 月曜日から金曜日の05:05 JST
+- Google Docs更新・Gmail送信: 平日05:40頃
+- 日次版の再試行: 平日06:10頃
+- Weekend Edition生成: 金曜日20:30 JST
+- Weekend Edition更新・送信: 金曜日21:00頃
+- 週末版の再試行: 金曜日21:30頃
 
-## 4. GitHub Actionsのシークレットを追加する
+Apps Scriptの時間主導型トリガーは指定時刻の前後に多少ずれる場合があります。再試行でも同じ内容のハッシュを確認するため、同じ号を二重送信しません。
 
-公開リポジトリ`ShumpeiUno/information`の`Settings` → `Secrets and variables` → `Actions`で、次の2つをRepository secretsとして追加します。
+## 固定閲覧先
 
-- `GOOGLE_APPS_SCRIPT_WEBHOOK_URL`: 手順3で発行されたWebアプリURL
-- `GOOGLE_APPS_SCRIPT_WEBHOOK_SECRET`: 手順2と同じランダム文字列
+- [00_Quantum Brief — CURRENT](https://docs.google.com/document/d/1q-b6YU1YFhqfDY8b3xzGtg-Oq81Twy7QCjoeCutZCZY/edit)
+- [01_Quantum Weekend — CURRENT](https://docs.google.com/document/d/1pY9_7_dS_xTptgGNUYqR0Geg0MP4AXTTWPf0WpADJtI/edit)
+- [GitHub公開版](https://github.com/ShumpeiUno/information/tree/main/quantum-daily)
 
-シークレットが未設定の場合も、公開GitHub版とAtomフィードは通常どおり更新されます。設定後は、Google Docs更新とGmail送信も同じ実行内で行われます。
+## 手動確認
 
-## 5. 動作確認する
+Apps Scriptエディタでは、次の関数も利用できます。
 
-GitHubの`Actions` → `Quantum Daily Brief` → `Run workflow`で`daily`を選びます。実行後、次を確認します。
-
-- `quantum-daily/CURRENT.md`が更新されていること
-- 固定Google Doc `00_Quantum Brief — CURRENT`が同じ号へ置き換わっていること
-- Gmailへ`[Quantum Daily]`のメールが届いていること
-
-金曜夜版は`weekend`を選ぶと、`01_Quantum Weekend — CURRENT`へ書き込みます。
+- `syncNow`: 日次版を直ちに更新・再送します。
+- `syncWeekendNow`: Weekend Editionを直ちに更新・再送します。
+- `automationStatus`: トリガー、最終同期時刻、メール残数を確認します。
+- `uninstallAutomation`: このプロジェクトが作成した時間トリガーを削除します。
 
 ## セキュリティ
 
-WebアプリURLだけでは処理できず、Webhook本文の共有シークレットが一致した場合だけGoogle Docs更新とメール送信を実行します。共有シークレットはリポジトリへコミットせず、Apps ScriptのスクリプトプロパティとGitHub Actions Secretsだけへ保存します。公開情報専用の連携であり、業務用・社内情報は送信しません。
+Apps Scriptは公開情報だけを含む`ShumpeiUno/information`のMarkdownを読みます。銀行業務、社内研究、個人メール、その他のGoogle Drive文書は読み取りません。送信先と更新対象のGoogle Docs IDはコード内で固定しています。
